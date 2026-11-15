@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 480" width="850" height="480">
+  <rect width="850" height="480" fill="#ffffff" rx="8" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="425" y="30" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="bold" fill="#0f172a">SupportDesk Relational Entity-Relationship Diagram (ERD)</text>
+
+  <!-- EMPLOYEES Table -->
+  <g>
+    <rect x="40" y="60" width="220" height="230" rx="6" fill="#f8fafc" stroke="#2563eb" stroke-width="2"/>
+    <rect x="40" y="60" width="220" height="32" rx="6" fill="#1e40af"/>
+    <text x="150" y="82" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="bold" fill="#ffffff">EMPLOYEES (कर्मचारी)</text>
+    <text x="55" y="115" font-family="monospace" font-size="11" fill="#0f172a"><tspan font-weight="bold" fill="#b91c1c">PK</tspan> id: BIGINT (AUTO_INCREMENT)</text>
+    <text x="55" y="135" font-family="monospace" font-size="11" fill="#0f172a">name: VARCHAR(100)</text>
+    <text x="55" y="155" font-family="monospace" font-size="11" fill="#0f172a"><tspan font-weight="bold" fill="#0369a1">UQ</tspan> email: VARCHAR(100)</text>
+    <text x="55" y="175" font-family="monospace" font-size="11" fill="#0f172a">password: VARCHAR(255)</text>
+    <text x="55" y="195" font-family="monospace" font-size="11" fill="#0f172a">department: VARCHAR(50)</text>
+    <text x="55" y="215" font-family="monospace" font-size="11" fill="#0f172a">role: VARCHAR(20) [ENUM]</text>
+    <text x="55" y="235" font-family="monospace" font-size="11" fill="#0f172a">phone: VARCHAR(20)</text>
+    <text x="55" y="255" font-family="monospace" font-size="11" fill="#0f172a">active: BOOLEAN</text>
+    <text x="55" y="275" font-family="monospace" font-size="11" fill="#0f172a">created_at: DATETIME</text>
+  </g>
+
+  <!-- TICKETS Table -->
+  <g>
+    <rect x="330" y="60" width="260" height="270" rx="6" fill="#f8fafc" stroke="#059669" stroke-width="2"/>
+    <rect x="330" y="60" width="260" height="32" rx="6" fill="#047857"/>
+    <text x="460" y="82" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="bold" fill="#ffffff">TICKETS (समर्थन टिकट)</text>
+    <text x="345" y="112" font-family="monospace" font-size="11" fill="#0f172a"><tspan font-weight="bold" fill="#b91c1c">PK</tspan> id: BIGINT (AUTO_INCREMENT)</text>
+    <text x="345" y="130" font-family="monospace" font-size="11" fill="#0f172a"><tspan font-weight="bold" fill="#0369a1">UQ</tspan> ticket_number: VARCHAR(30)</text>
+    <text x="345" y="148" font-family="monospace" font-size="11" fill="#0f172a">title: VARCHAR(150)</text>
+    <text x="345" y="166" font-family="monospace" font-size="11" fill="#0f172a">description: TEXT</text>
+    <text x="345" y="184" font-family="monospace" font-size="11" fill="#0f172a">category: VARCHAR(50)</text>
+    <text x="345" y="202" font-family="monospace" font-size="11" fill="#0f172a">priority: VARCHAR(20) [ENUM]</text>
+    <text x="345" y="220" font-family="monospace" font-size="11" fill="#0f172a">status: VARCHAR(20) [ENUM]</text>
+    <text x="345" y="238" font-family="monospace" font-size="11" fill="#0f172a">sla_deadline: DATETIME</text>
+    <text x="345" y="256" font-family="monospace" font-size="11" fill="#0f172a"><tspan font-weight="bold" fill="#b45309">FK</tspan> employee_id: BIGINT</text>
+    <text x="345" y="274" font-family="monospace" font-size="11" fill="#0f172a"><tspan font-weight="bold" fill="#b45309">FK</tspan> assigned_technician_id: BIGINT</text>
+    <text x="345" y="292" font-family="monospace" font-size="11" fill="#0f172a">resolution_notes: TEXT</text>
+    <text x="345" y="310" font-family="monospace" font-size="11" fill="#0f172a">created_at, updated_at: DATETIME</text>
+  </g>
+
+  <!-- TICKET_COMMENTS Table -->
+  <g>
+    <rect x="640" y="60" width="180" height="150" rx="6" fill="#f8fafc" stroke="#d97706" stroke-width="2"/>
+    <rect x="640" y="60" width="180" height="32" rx="6" fill="#b45309"/>
+    <text x="730" y="82" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#ffffff">TICKET_COMMENTS</text>
+    <text x="650" y="112" font-family="monospace" font-size="10.5" fill="#0f172a"><tspan font-weight="bold" fill="#b91c1c">PK</tspan> id: BIGINT</text>
+    <text x="650" y="132" font-family="monospace" font-size="10.5" fill="#0f172a"><tspan font-weight="bold" fill="#b45309">FK</tspan> ticket_id: BIGINT</text>
+    <text x="650" y="152" font-family="monospace" font-size="10.5" fill="#0f172a"><tspan font-weight="bold" fill="#b45309">FK</tspan> employee_id: BIGINT</text>
+    <text x="650" y="172" font-family="monospace" font-size="10.5" fill="#0f172a">comment_text: TEXT</text>
+    <text x="650" y="192" font-family="monospace" font-size="10.5" fill="#0f172a">created_at: DATETIME</text>
+  </g>
+
+  <!-- TICKET_ACTIVITIES Table -->
+  <g>
+    <rect x="640" y="240" width="180" height="150" rx="6" fill="#f8fafc" stroke="#7c3aed" stroke-width="2"/>
+    <rect x="640" y="240" width="180" height="32" rx="6" fill="#6d28d9"/>
+    <text x="730" y="262" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#ffffff">TICKET_ACTIVITIES</text>
+    <text x="650" y="292" font-family="monospace" font-size="10.5" fill="#0f172a"><tspan font-weight="bold" fill="#b91c1c">PK</tspan> id: BIGINT</text>
+    <text x="650" y="312" font-family="monospace" font-size="10.5" fill="#0f172a"><tspan font-weight="bold" fill="#b45309">FK</tspan> ticket_id: BIGINT</text>
+    <text x="650" y="332" font-family="monospace" font-size="10.5" fill="#0f172a"><tspan font-weight="bold" fill="#b45309">FK</tspan> employee_id: BIGINT</text>
+    <text x="650" y="352" font-family="monospace" font-size="10.5" fill="#0f172a">activity_type: VARCHAR</text>
+    <text x="650" y="372" font-family="monospace" font-size="10.5" fill="#0f172a">description: VARCHAR(255)</text>
+  </g>
+
+  <!-- NOTIFICATIONS Table -->
+  <g>
+    <rect x="330" y="360" width="260" height="105" rx="6" fill="#f8fafc" stroke="#db2777" stroke-width="2"/>
+    <rect x="330" y="360" width="260" height="28" rx="6" fill="#be185d"/>
+    <text x="460" y="380" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#ffffff">NOTIFICATIONS (सूचनाएँ)</text>
+    <text x="345" y="405" font-family="monospace" font-size="10.5" fill="#0f172a"><tspan font-weight="bold" fill="#b91c1c">PK</tspan> id: BIGINT, <tspan font-weight="bold" fill="#b45309">FK</tspan> recipient_id, <tspan font-weight="bold" fill="#b45309">FK</tspan> ticket_id</text>
+    <text x="345" y="423" font-family="monospace" font-size="10.5" fill="#0f172a">title, message, notification_type: VARCHAR</text>
+    <text x="345" y="441" font-family="monospace" font-size="10.5" fill="#0f172a">is_read: BOOLEAN, created_at: DATETIME</text>
+  </g>
+
+  <!-- Relationship Lines -->
+  <!-- Employees to Tickets (1 to Many) -->
+  <line x1="260" y1="170" x2="330" y2="170" stroke="#2563eb" stroke-width="2" stroke-dasharray="4"/>
+  <text x="295" y="162" text-anchor="middle" font-family="monospace" font-size="10" fill="#2563eb">1 : N</text>
+
+  <!-- Tickets to Comments (1 to Many) -->
+  <line x1="590" y1="130" x2="640" y2="130" stroke="#059669" stroke-width="2" stroke-dasharray="4"/>
+  <text x="615" y="122" text-anchor="middle" font-family="monospace" font-size="10" fill="#059669">1 : N</text>
+
+  <!-- Tickets to Activities (1 to Many) -->
+  <line x1="590" y1="280" x2="640" y2="280" stroke="#059669" stroke-width="2" stroke-dasharray="4"/>
+  <text x="615" y="272" text-anchor="middle" font-family="monospace" font-size="10" fill="#059669">1 : N</text>
+</svg>

@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupportDesk - IT Help Desk & Ticket Management</title>
+    <!-- Modern SVG Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232563eb'><path d='M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z'/></svg>">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ==========================================================================
+     VIEW 1: SAME-PAGE LOGIN SCREEN (Visible when in-memory token is absent)
+     ========================================================================== -->
+<div id="loginView" class="auth-split-layout" style="display: flex;">
+    <!-- Left Panel: Deep Navy Branding & Value Proposition (42%) -->
+    <div class="auth-branding-panel">
+        <div class="auth-brand-header">
+            <div class="auth-brand-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 22px; height: 22px;">
+                    <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+            </div>
+            <div class="auth-brand-text">
+                <span class="auth-brand-name">SupportDesk</span>
+                <span class="auth-brand-edition">Enterprise Service Management</span>
+            </div>
+        </div>
+
+        <div class="auth-branding-content">
+            <h2 class="auth-hero-title">IT Help Desk &amp; Service Management</h2>
+            <p class="auth-hero-desc">Streamline incident workflows, monitor SLA resolution in real time, and empower support teams across your organization.</p>
+
+            <div class="auth-features-list">
+                <div class="auth-feature-card">
+                    <div class="auth-feature-icon">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <div class="auth-feature-info">
+                        <span class="auth-feature-name">Centralized Ticket Management</span>
+                        <span class="auth-feature-text">Track, prioritize, and resolve enterprise support tickets with complete audit history.</span>
+                    </div>
+                </div>
+
+                <div class="auth-feature-card">
+                    <div class="auth-feature-icon">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div class="auth-feature-info">
+                        <span class="auth-feature-name">SLA Tracking &amp; Resolution</span>
+                        <span class="auth-feature-text">Automated SLA deadline monitoring, timely resolution workflows, and performance indicators.</span>
+                    </div>
+                </div>
+
+                <div class="auth-feature-card">
+                    <div class="auth-feature-icon">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div class="auth-feature-info">
+                        <span class="auth-feature-name">Secure Role-Based Access</span>
+                        <span class="auth-feature-text">Strict RBAC controls for administrators, technicians, and staff employees.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="auth-branding-footer">
+            <span>SupportDesk Enterprise Platform</span>
+        </div>
+    </div>
+
+    <!-- Right Panel: Clean Workspace with Elevated Form Card (58%) -->
+    <div class="auth-form-panel">
+        <div class="auth-form-container">
+            <!-- Mobile Brand Header (visible when branding panel is collapsed on mobile/tablet) -->
+            <div class="auth-mobile-brand">
+                <div class="auth-brand-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 22px; height: 22px;">
+                        <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h2 style="font-size: 20px; font-weight: 700; color: var(--text-primary); text-align: center;">SupportDesk</h2>
+                <p style="font-size: 12px; color: var(--text-muted); text-align: center;">Enterprise IT Help Desk &amp; Service Management</p>
+            </div>
+
+            <div class="auth-form-header">
+                <h1 class="auth-form-title">Welcome back</h1>
+                <p class="auth-form-subtitle">Sign in to your SupportDesk account.</p>
+            </div>
+
+            <!-- Alert Notification Box -->
+            <div id="loginAlertBox" class="alert alert-danger" style="display: none; margin-bottom: 16px;">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span id="loginAlertMessage"></span>
+            </div>
+
+            <!-- In-Memory Security Badge -->
+            <div class="auth-security-badge">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary); flex-shrink: 0;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>In-memory secure session with zero persistent cookie storage.</span>
+            </div>
+
+            <!-- Sign In Form -->
+            <form id="loginForm" autocomplete="on" novalidate>
+                <div class="form-group" style="margin-bottom: 18px;">
+                    <label for="emailInput" class="form-label" style="font-weight: 600; font-size: 12.5px; margin-bottom: 6px; display: block;">Corporate Email</label>
+                    <div class="input-with-icon">
+                        <span class="input-icon-adornment">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </span>
+                        <input 
+                            type="email" 
+                            id="emailInput" 
+                            class="form-control" 
+                            placeholder="name@company.com" 
+                            required 
+                            autocomplete="email"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 22px;">
+                    <label for="passwordInput" class="form-label" style="font-weight: 600; font-size: 12.5px; margin-bottom: 6px; display: block;">Password</label>
+                    <div class="input-with-icon password-input-wrapper">
+                        <span class="input-icon-adornment">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </span>
+                        <input 
+                            type="password" 
+                            id="passwordInput" 
+                            class="form-control" 
+                            placeholder="Enter account password" 
+                            required 
+                            autocomplete="current-password"
+                        />
+                        <button type="button" id="togglePasswordBtn" class="password-toggle-btn" title="Toggle password visibility" aria-label="Toggle password visibility">
+                            <svg id="eyeIcon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <svg id="eyeOffIcon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                                <line x1="1" y1="1" x2="23" y2="23"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" id="loginSubmitBtn" class="btn btn-primary">
+                    <span id="loginBtnText">Sign In to Dashboard</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     VIEW 2: AUTHENTICATED DASHBOARD (Visible when in-memory session is active)
+     ========================================================================== -->
+<div id="dashboardView" class="app-container" style="display: none;">
+
+    <!-- 1. SIDEBAR NAVIGATION (Dark Navy Theme) -->
+    <aside class="sidebar" id="appSidebar">
+        <div class="sidebar-header">
+            <div class="brand-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+            </div>
+            <div class="brand-text">
+                <span class="brand-title">SupportDesk</span>
+                <span class="brand-subtitle">Enterprise IT Desk</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section-title">Core Workspace</div>
+            <a href="#dashboard" class="nav-item active" id="navDashboard">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                </span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#tickets" class="nav-item" id="navTickets">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                </span>
+                <span>All Tickets</span>
+            </a>
+            <a href="#" class="nav-item" id="sidebarNewTicketBtn">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                </span>
+                <span>Create Ticket</span>
+            </a>
+
+            <div class="nav-section-title" id="adminNavSectionTitle" style="margin-top: 14px;">Administration</div>
+            <a href="#employees" class="nav-item" id="sidebarEmployeesBtn">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <span>Employees</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-snippet">
+                <div class="user-avatar display-user-avatar">--</div>
+                <div class="user-meta">
+                    <div class="user-name display-user-name">Loading...</div>
+                    <div class="user-role-text">
+                        <span class="badge display-user-role badge-role-employee">...</span>
+                    </div>
+                </div>
+                <button class="btn btn-outline btn-sm btn-logout" title="Sign out" style="padding: 4px 8px; font-size: 11px; color: #94a3b8; border-color: #334155;">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- 2. MAIN CONTENT AREA -->
+    <div class="main-content">
+
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="navbar-left">
+                <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Toggle navigation menu">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <div class="page-breadcrumb">
+                    <span>Portal</span> &nbsp;/&nbsp; <strong id="breadcrumbCurrentPage">IT Help Desk Dashboard</strong>
+                </div>
+            </div>
+
+            <div class="navbar-right">
+                <!-- Notification Bell & Dropdown Component -->
+                <div class="notification-container" id="notificationContainer">
+                    <button class="notification-bell-btn" id="notificationBellBtn" title="In-App Notifications" aria-label="Notifications" type="button">
+                        <span class="bell-icon">
+                            <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        </span>
+                        <span class="notification-badge" id="notificationBadge" style="display: none;">0</span>
+                    </button>
+                    <!-- Notification Popover Dropdown -->
+                    <div class="notification-dropdown" id="notificationDropdown" style="display: none;">
+                        <div class="notification-header">
+                            <div class="notification-header-title">
+                                <span>Activity Notifications</span>
+                                <span class="notification-count-tag" id="notificationCountTag">0 unread</span>
+                            </div>
+                            <div class="notification-actions">
+                                <button class="btn btn-link btn-xs" id="markAllReadBtn" type="button" title="Mark all as read">
+                                    Mark all read
+                                </button>
+                            </div>
+                        </div>
+                        <div class="notification-list" id="notificationList">
+                            <!-- Populated dynamically via JS -->
+                            <div class="notification-empty">No notifications yet</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="height: 24px; width: 1px; background: var(--border-color); margin: 0 4px;"></div>
+
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="user-avatar display-user-avatar" style="width: 30px; height: 30px; font-size: 11px; background: #e0e7ff; color: #3730a3; border: 1px solid #c7d2fe;">--</div>
+                    <span class="display-user-name" style="font-weight: 600; font-size: 13px; color: var(--text-primary);">Loading...</span>
+                    <span class="badge display-user-role badge-role-employee" style="font-size: 10.5px;">...</span>
+                </div>
+
+                <button class="btn btn-outline btn-sm btn-logout" style="margin-left: 6px;">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Body -->
+        <main class="page-body">
+
+            <!-- System Feedback Notification Banner -->
+            <div id="systemToastAlert" class="alert alert-success" style="display: none;"></div>
+
+            <!-- ==========================================================
+                 SECTION VIEW 1: TICKETS DASHBOARD VIEW
+                 ========================================================== -->
+            <!-- ==========================================================
+                 SECTION VIEW 1: IT HELP DESK DASHBOARD VIEW
+                 ========================================================== -->
+            <div id="dashboardSectionView">
+                <!-- Dashboard Header -->
+                <div class="page-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 22px;">
+                    <div>
+                        <h1 class="page-title" style="margin-bottom: 0;">IT Help Desk Dashboard</h1>
+                        <p class="page-subtitle" style="margin-top: 4px; margin-bottom: 0;">Real-time ticket tracking, SLA monitoring, and technician workloads</p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <button id="openCreateTicketBtn" class="btn btn-primary btn-open-create-ticket" type="button">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <span>Create Ticket</span>
+                        </button>
+                        <button id="refreshDashboardBtn" class="btn btn-secondary" type="button">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                            <span>Refresh</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Role Notice Alert (Displayed for EMPLOYEE role regarding summary stats) -->
+                <div id="statsNoticeAlert" class="alert alert-info" style="display: none;"></div>
+
+                <!-- METRIC STAT CARDS GRID (Dashboard 4-Card Overview) -->
+                <div class="stats-grid grid-4" id="statsGridContainer">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-title">Total Tickets</span>
+                            <div class="stat-icon primary">
+                                <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="statTotalTickets">...</div>
+                        <div class="stat-footer">
+                            <span>All recorded support tickets</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-title">In Progress</span>
+                            <div class="stat-icon warning">
+                                <svg viewBox="0 0 24 24" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="statInProgressTickets" style="color: var(--status-in-progress);">...</div>
+                        <div class="stat-footer">
+                            <span id="statInProgressSub">Active tickets</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-title">Overdue SLA</span>
+                            <div class="stat-icon danger">
+                                <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="statOverdueTickets" style="color: var(--priority-critical);">...</div>
+                        <div class="stat-footer">
+                            <span>Tickets past SLA deadline</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-title">Resolved</span>
+                            <div class="stat-icon success">
+                                <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="statResolvedTickets" style="color: var(--status-resolved);">...</div>
+                        <div class="stat-footer">
+                            <span id="statResolvedSub">Closed or resolved</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DASHBOARD TICKETS SUMMARY SECTION -->
+                <div class="card">
+                    <div class="card-header" style="flex-wrap: wrap; gap: 12px; justify-content: space-between;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span class="card-title">Recent Support Tickets</span>
+                            <span class="badge badge-open" id="dashboardTicketCountBadge">Loading...</span>
+                        </div>
+                        <button type="button" class="btn btn-outline btn-sm" id="dashboardViewAllTicketsBtn">
+                            <span>View All Tickets</span>
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 110px;">Ticket #</th>
+                                    <th>Title & Description</th>
+                                    <th style="width: 120px;">Category</th>
+                                    <th style="width: 110px;">Priority</th>
+                                    <th style="width: 125px;">Status</th>
+                                    <th style="width: 150px;">SLA Deadline</th>
+                                    <th style="width: 150px;">Requester</th>
+                                    <th style="width: 115px; text-align: right;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboardTicketsTableBody">
+                                <tr>
+                                    <td colspan="8" style="text-align: center; padding: 36px 20px; color: var(--text-muted);">
+                                        Loading recent tickets from server...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================================
+                 SECTION VIEW 2: ALL SUPPORT TICKETS VIEW
+                 ========================================================== -->
+            <div id="ticketsSectionView" style="display: none;">
+                <!-- Professional Page Header -->
+                <div class="page-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 22px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <h1 class="page-title" style="margin-bottom: 0;">All Support Tickets</h1>
+                            <span class="badge badge-open" id="totalTicketsHeaderBadge" style="font-size: 12px; font-weight: 700;">...</span>
+                        </div>
+                        <p class="page-subtitle" style="margin-top: 4px; margin-bottom: 0;">Track, manage, and resolve support requests.</p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <button id="openCreateTicketBtnTickets" class="btn btn-primary btn-open-create-ticket" type="button">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <span>Create Ticket</span>
+                        </button>
+                        <button id="refreshTicketsBtn" class="btn btn-secondary" type="button">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                            <span>Refresh</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- METRIC STAT CARDS GRID (5-Column SaaS Overview) -->
+                <div class="stats-grid" id="ticketsStatsGridContainer">
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-title">Total Tickets</span>
+                            <div class="stat-icon primary">
+                                <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="ticketsStatTotal">...</div>
+                        <div class="stat-footer">
+                            <span>All recorded tickets</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-title">Open & Assigned</span>
+                            <div class="stat-icon info">
+                                <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="ticketsStatOpen" style="color: var(--status-assigned);">...</div>
+                        <div class="stat-footer">
+                            <span id="ticketsStatOpenSub">Awaiting triage / queue</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-title">In Progress</span>
+                            <div class="stat-icon warning">
+                                <svg viewBox="0 0 24 24" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="ticketsStatInProgress" style="color: var(--status-in-progress);">...</div>
+                        <div class="stat-footer">
+                            <span id="ticketsStatInProgressSub">Active resolution work</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-title">Resolved & Closed</span>
+                            <div class="stat-icon success">
+                                <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="ticketsStatResolved" style="color: var(--status-resolved);">...</div>
+                        <div class="stat-footer">
+                            <span id="ticketsStatResolvedSub">Successfully resolved</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-card-header">
+                            <span class="stat-title">Overdue SLA</span>
+                            <div class="stat-icon danger">
+                                <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="ticketsStatOverdue" style="color: var(--priority-critical);">...</div>
+                        <div class="stat-footer">
+                            <span>Past resolution target</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TICKETS TABLE SECTION -->
+                <div class="card">
+                    <!-- Toolbar with Search and Multi-Facet Filters -->
+                    <div class="ticket-toolbar">
+                        <div class="ticket-search-box">
+                            <span class="ticket-search-icon">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </span>
+                            <input type="text" id="ticketSearchInput" class="ticket-search-input" placeholder="Search by ticket #, title, requester, or category..." autocomplete="off">
+                        </div>
+
+                        <div class="ticket-filters-group">
+                            <div class="filter-item">
+                                <label for="statusFilter" class="filter-label">Status</label>
+                                <select id="statusFilter" class="filter-select">
+                                    <option value="ALL">All Statuses</option>
+                                    <option value="OPEN">Open</option>
+                                    <option value="ASSIGNED">Assigned</option>
+                                    <option value="IN_PROGRESS">In Progress</option>
+                                    <option value="RESOLVED">Resolved</option>
+                                    <option value="CLOSED">Closed</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-item">
+                                <label for="priorityFilter" class="filter-label">Priority</label>
+                                <select id="priorityFilter" class="filter-select">
+                                    <option value="ALL">All Priorities</option>
+                                    <option value="CRITICAL">Critical (4h)</option>
+                                    <option value="HIGH">High (8h)</option>
+                                    <option value="MEDIUM">Medium (24h)</option>
+                                    <option value="LOW">Low (48h)</option>
+                                </select>
+                            </div>
+
+                            <div class="filter-item">
+                                <label for="categoryFilter" class="filter-label">Category</label>
+                                <select id="categoryFilter" class="filter-select">
+                                    <option value="ALL">All Categories</option>
+                                </select>
+                            </div>
+
+                            <button id="clearTicketFiltersBtn" class="btn btn-outline filter-clear-btn" type="button" title="Reset all search queries and filters">
+                                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                                <span>Clear Filters</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Meta Bar showing matching count -->
+                    <div class="table-meta-bar">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="font-weight: 600; color: var(--text-primary);">Tickets Record</span>
+                            <span class="badge badge-open" id="ticketCountBadge">Loading...</span>
+                        </div>
+                        <div id="filterStatusIndicator" style="font-size: 12px; color: var(--text-muted); display: none;">
+                            Filtered view
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 110px;">Ticket #</th>
+                                    <th>Title & Description</th>
+                                    <th style="width: 120px;">Category</th>
+                                    <th style="width: 110px;">Priority</th>
+                                    <th style="width: 125px;">Status</th>
+                                    <th style="width: 150px;">Requester</th>
+                                    <th style="width: 150px;">Assigned To</th>
+                                    <th style="width: 160px;">SLA Deadline</th>
+                                    <th style="width: 130px;">Created</th>
+                                    <th style="width: 115px; text-align: right;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ticketsTableBody">
+                                <tr>
+                                    <td colspan="10" style="text-align: center; padding: 48px 20px;">
+                                        <div class="loading-state-container">
+                                            <div class="spinner-enterprise" style="margin-bottom: 12px;"></div>
+                                            <div style="font-weight: 600; color: var(--text-primary); font-size: 13.5px;">Loading tickets from server...</div>
+                                            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Fetching real-time ticket records</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================================
+                 SECTION VIEW 2: EMPLOYEE ADMINISTRATION (Phase 7.5 - Admin Only)
+                 ========================================================== -->
+            <div id="employeesSectionView" style="display: none;">
+                <!-- Employee Phase Banner -->
+                <div class="phase-banner">
+                    <div>
+                        <span class="phase-tag">Administration Control</span>
+                        <div class="phase-banner-title">Employee Administration & Staff Directory</div>
+                        <div class="phase-banner-desc">
+                            Register new employees, update staff profiles and roles, and manage account activation status.
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button id="openCreateEmployeeBtn" class="btn btn-primary btn-sm">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            <span>Add Employee</span>
+                        </button>
+                        <button id="refreshEmployeesBtn" class="btn btn-secondary btn-sm">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                            <span>Refresh</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Employee Directory</h1>
+                        <p class="page-subtitle">Manage organization staff, technicians, and system administrators</p>
+                    </div>
+                </div>
+
+                <!-- Employee Directory Card -->
+                <div class="card">
+                    <div class="card-header" style="flex-wrap: wrap; gap: 12px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span class="card-title">All Employees</span>
+                            <span class="badge badge-open" id="employeeCountBadge">Loading...</span>
+                        </div>
+
+                        <!-- Filters & Search -->
+                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                            <input 
+                                type="text" 
+                                id="employeeSearchInput" 
+                                class="form-control" 
+                                placeholder="Search by name, email, dept..." 
+                                style="padding: 6px 12px; font-size: 12.5px; width: 220px;" 
+                            />
+
+                            <select id="employeeRoleFilter" class="form-select" style="padding: 6px 12px; font-size: 12.5px; width: auto;">
+                                <option value="ALL">All Roles</option>
+                                <option value="EMPLOYEE">Employees</option>
+                                <option value="TECHNICIAN">Technicians</option>
+                                <option value="ADMIN">Administrators</option>
+                            </select>
+
+                            <select id="employeeDeptFilter" class="form-select" style="padding: 6px 12px; font-size: 12.5px; width: auto;">
+                                <option value="ALL">All Departments</option>
+                                <option value="IT">IT</option>
+                                <option value="HR">HR</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Sales">Sales</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Operations">Operations</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Department</th>
+                                    <th>Role</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Joined</th>
+                                    <th style="text-align: right;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employeesTableBody">
+                                <tr>
+                                    <td colspan="7" style="text-align: center; padding: 28px; color: var(--text-muted);">
+                                        Loading employees from server...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</div>
+
+<!-- ==========================================================================
+     MODAL 1: CREATE TICKET MODAL
+     ========================================================================== -->
+<div id="createTicketModal" class="modal-backdrop" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h2 class="modal-title">Create Support Ticket</h2>
+            <button type="button" class="modal-close-btn" id="closeCreateModalBtn" aria-label="Close modal">&times;</button>
+        </div>
+
+        <form id="createTicketForm" novalidate>
+            <div class="modal-body">
+                <div id="createTicketAlert" class="alert alert-danger" style="display: none;">
+                    <span id="createTicketAlertMsg"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="ticketTitleInput" class="form-label">Subject / Title <span style="color: var(--priority-critical);">*</span></label>
+                    <input 
+                        type="text" 
+                        id="ticketTitleInput" 
+                        class="form-control" 
+                        placeholder="e.g. Primary network switch offline on Floor 2" 
+                        maxlength="150" 
+                        required 
+                    />
+                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Max 150 characters.</div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="form-group">
+                        <label for="ticketCategorySelect" class="form-label">Category <span style="color: var(--priority-critical);">*</span></label>
+                        <select id="ticketCategorySelect" class="form-select" required>
+                            <option value="">Select Category...</option>
+                            <option value="Hardware">Hardware</option>
+                            <option value="Software">Software</option>
+                            <option value="Network">Network</option>
+                            <option value="Access & Security">Access & Security</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ticketPrioritySelect" class="form-label">Priority <span style="color: var(--priority-critical);">*</span></label>
+                        <select id="ticketPrioritySelect" class="form-select" required>
+                            <option value="LOW">LOW (48h SLA)</option>
+                            <option value="MEDIUM" selected>MEDIUM (24h SLA)</option>
+                            <option value="HIGH">HIGH (8h SLA)</option>
+                            <option value="CRITICAL">CRITICAL (4h SLA)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label for="ticketDescriptionInput" class="form-label">Detailed Description <span style="color: var(--priority-critical);">*</span></label>
+                    <textarea 
+                        id="ticketDescriptionInput" 
+                        class="form-control" 
+                        rows="4" 
+                        placeholder="Describe the issue, error logs, workstation details, and steps to reproduce..." 
+                        required
+                    ></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancelCreateModalBtn">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="submitCreateTicketBtn">
+                    <span id="submitCreateBtnText">Submit Ticket</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     MODAL 2: TICKET DETAILS, COMMENTS & ACTIVITY HISTORY MODAL
+     ========================================================================== -->
+<div id="ticketDetailModal" class="modal-backdrop" style="display: none;">
+    <div class="modal-dialog modal-dialog-lg">
+        <div class="modal-header">
+            <div>
+                <span class="badge" id="detailTicketNumber" style="font-family: monospace; font-size: 12px; margin-bottom: 4px;">TCK-...</span>
+                <h2 class="modal-title" id="detailTicketTitle">Ticket Title</h2>
+            </div>
+            <button type="button" class="modal-close-btn" id="closeDetailModalBtn" aria-label="Close modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <!-- Error / Warning Box in Details -->
+            <div id="detailErrorAlert" class="alert alert-danger" style="display: none;"></div>
+
+            <!-- Loading Spinner in Details -->
+            <div id="detailLoadingSpinner" style="text-align: center; padding: 40px; color: var(--text-muted); display: none;">
+                Loading ticket details from server...
+            </div>
+
+            <!-- Details Content Container -->
+            <div id="detailMainContent">
+                <!-- Metadata Grid -->
+                <div class="detail-meta-grid">
+                    <div class="meta-field">
+                        <span class="meta-label">Status</span>
+                        <div id="detailStatus">...</div>
+                    </div>
+                    <div class="meta-field">
+                        <span class="meta-label">Priority</span>
+                        <div id="detailPriority">...</div>
+                    </div>
+                    <div class="meta-field">
+                        <span class="meta-label">Category</span>
+                        <span class="meta-value" id="detailCategory">...</span>
+                    </div>
+                    <div class="meta-field">
+                        <span class="meta-label">SLA Deadline</span>
+                        <div id="detailSlaDeadline">...</div>
+                    </div>
+                    <div class="meta-field">
+                        <span class="meta-label">Requester</span>
+                        <span class="meta-value" id="detailRequester">...</span>
+                    </div>
+                    <div class="meta-field">
+                        <span class="meta-label">Assigned Technician</span>
+                        <span class="meta-value" id="detailTechnician">...</span>
+                    </div>
+                    <div class="meta-field">
+                        <span class="meta-label">Created At</span>
+                        <span class="meta-value" id="detailCreatedAt" style="font-size: 12px; color: var(--text-muted);">...</span>
+                    </div>
+                    <div class="meta-field">
+                        <span class="meta-label">Last Updated</span>
+                        <span class="meta-value" id="detailUpdatedAt" style="font-size: 12px; color: var(--text-muted);">...</span>
+                    </div>
+                </div>
+
+                <!-- Staff Actions & Management Panel (Phase 7.4) -->
+                <div id="detailStaffActionsPanel" class="detail-actions-panel" style="display: none;">
+                    <div class="actions-panel-title">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        <span>Staff Operations & Lifecycle Controls</span>
+                    </div>
+
+                    <!-- Action feedback alert -->
+                    <div id="actionFeedbackAlert" class="alert alert-danger" style="display: none; font-size: 12.5px; padding: 10px 14px; margin-bottom: 14px;"></div>
+
+                    <div class="actions-row">
+                        <!-- 1. Assignment Control (ADMIN only) -->
+                        <div id="assignTechnicianSection" class="form-group" style="margin-bottom: 0;">
+                            <label for="assignTechnicianSelect" class="form-label" style="font-size: 12px;">Assign Technician (Admin)</label>
+                            <div style="display: flex; gap: 8px;">
+                                <select id="assignTechnicianSelect" class="form-select" style="font-size: 12.5px; padding: 6px 10px;">
+                                    <option value="">Select Technician...</option>
+                                </select>
+                                <button type="button" id="submitAssignBtn" class="btn btn-primary btn-sm" style="white-space: nowrap;">
+                                    Assign
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 2. Status Update Control (ADMIN and TECHNICIAN) -->
+                        <div id="updateStatusSection" class="form-group" style="margin-bottom: 0;">
+                            <label for="updateStatusSelect" class="form-label" style="font-size: 12px;">Update Lifecycle Status</label>
+                            <div style="display: flex; gap: 8px;">
+                                <select id="updateStatusSelect" class="form-select" style="font-size: 12.5px; padding: 6px 10px;">
+                                    <option value="OPEN">OPEN</option>
+                                    <option value="ASSIGNED">ASSIGNED</option>
+                                    <option value="IN_PROGRESS">IN_PROGRESS</option>
+                                    <option value="RESOLVED">RESOLVED</option>
+                                    <option value="CLOSED">CLOSED</option>
+                                </select>
+                                <button type="button" id="submitStatusBtn" class="btn btn-primary btn-sm" style="white-space: nowrap;">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Resolution Notes Section (ADMIN and TECHNICIAN) -->
+                    <div id="resolveTicketSection" style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-color);">
+                        <label for="resolveNotesInput" class="form-label" style="font-size: 12px;">Resolution Notes & Remediation Summary</label>
+                        <textarea id="resolveNotesInput" class="form-control" rows="2" placeholder="Document the root cause and steps taken to remediate..." style="font-size: 12.5px; margin-bottom: 8px;"></textarea>
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                            <label style="font-size: 12px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                                <input type="checkbox" id="markResolvedCheckbox" checked> Mark ticket status as RESOLVED
+                            </label>
+                            <button type="button" id="submitResolveBtn" class="btn btn-primary btn-sm">
+                                Save Resolution
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Issue Description -->
+                <div style="margin-bottom: 22px;">
+                    <div style="font-weight: 600; font-size: 13px; color: var(--text-primary); margin-bottom: 6px;">Issue Description</div>
+                    <div id="detailDescription" style="padding: 14px; background-color: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 13px; line-height: 1.6; color: var(--text-secondary); white-space: pre-wrap;"></div>
+                </div>
+
+                <!-- Resolution Notes Section (Visible only if resolution notes exist) -->
+                <div id="detailResolutionSection" style="margin-bottom: 22px; display: none;">
+                    <div style="font-weight: 600; font-size: 13px; color: var(--status-resolved); margin-bottom: 6px;">Resolution Notes & Remediation</div>
+                    <div id="detailResolutionNotes" style="padding: 14px; background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-md); font-size: 13px; line-height: 1.6; color: #166534; white-space: pre-wrap;"></div>
+                </div>
+
+                <!-- Tabs: Comments vs Activity History -->
+                <div class="tabs-nav">
+                    <button type="button" class="tab-btn active" id="tabCommentsBtn">Comments (<span id="commentCount">0</span>)</button>
+                    <button type="button" class="tab-btn" id="tabActivitiesBtn">Activity History (<span id="activityCount">0</span>)</button>
+                </div>
+
+                <!-- TAB 1: Comments Section -->
+                <div id="tabCommentsContent">
+                    <div class="comments-list" id="commentsContainer">
+                        <!-- Loaded dynamically -->
+                    </div>
+
+                    <!-- Add Comment Form -->
+                    <form id="addCommentForm" novalidate style="margin-top: 16px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+                        <div id="addCommentAlert" class="alert alert-danger" style="display: none;"></div>
+                        <div class="form-group" style="margin-bottom: 10px;">
+                            <label for="commentTextInput" class="form-label" style="font-size: 12.5px;">Add Note or Response</label>
+                            <textarea 
+                                id="commentTextInput" 
+                                class="form-control" 
+                                rows="3" 
+                                placeholder="Type your response or internal note..." 
+                                required
+                            ></textarea>
+                        </div>
+                        <div style="display: flex; justify-content: flex-end;">
+                            <button type="submit" class="btn btn-primary btn-sm" id="submitCommentBtn">
+                                <span id="submitCommentBtnText">Post Comment</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- TAB 2: Activity History Section -->
+                <div id="tabActivitiesContent" style="display: none;">
+                    <div class="timeline" id="activitiesContainer">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" id="closeDetailFooterBtn">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================================
+     MODAL 3: ADD / EDIT EMPLOYEE MODAL (Phase 7.5)
+     ========================================================================== -->
+<div id="employeeModal" class="modal-backdrop" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <h2 class="modal-title" id="employeeModalTitle">Add New Employee</h2>
+            <button type="button" class="modal-close-btn" id="closeEmployeeModalBtn" aria-label="Close modal">&times;</button>
+        </div>
+
+        <form id="employeeForm" novalidate>
+            <div class="modal-body">
+                <input type="hidden" id="employeeIdInput" value="" />
+
+                <div id="employeeModalAlert" class="alert alert-danger" style="display: none;">
+                    <span id="employeeModalAlertMsg"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="employeeNameInput" class="form-label">Full Name <span style="color: var(--priority-critical);">*</span></label>
+                    <input 
+                        type="text" 
+                        id="employeeNameInput" 
+                        class="form-control" 
+                        placeholder="e.g. Ramesh Kumar" 
+                        maxlength="100" 
+                        required 
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="employeeEmailInput" class="form-label">Work Email <span style="color: var(--priority-critical);">*</span></label>
+                    <input 
+                        type="email" 
+                        id="employeeEmailInput" 
+                        class="form-control" 
+                        placeholder="ramesh@company.com" 
+                        maxlength="100" 
+                        required 
+                    />
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                    <div class="form-group">
+                        <label for="employeeDeptInput" class="form-label">Department <span style="color: var(--priority-critical);">*</span></label>
+                        <input 
+                            type="text" 
+                            id="employeeDeptInput" 
+                            class="form-control" 
+                            placeholder="e.g. IT, HR, Finance" 
+                            maxlength="50" 
+                            required 
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="employeeRoleSelect" class="form-label">Role <span style="color: var(--priority-critical);">*</span></label>
+                        <select id="employeeRoleSelect" class="form-select" required>
+                            <option value="EMPLOYEE" selected>EMPLOYEE</option>
+                            <option value="TECHNICIAN">TECHNICIAN</option>
+                            <option value="ADMIN">ADMIN</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="employeePhoneInput" class="form-label">Phone Number</label>
+                    <input 
+                        type="tel" 
+                        id="employeePhoneInput" 
+                        class="form-control" 
+                        placeholder="e.g. +91 9876543210" 
+                        maxlength="20" 
+                    />
+                </div>
+
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label for="employeePasswordInput" class="form-label">
+                        <span id="employeePasswordLabel">Password</span> <span id="employeePasswordRequiredMarker" style="color: var(--priority-critical);">*</span>
+                    </label>
+                    <input 
+                        type="password" 
+                        id="employeePasswordInput" 
+                        class="form-control" 
+                        placeholder="Minimum 6 characters" 
+                        minlength="6" 
+                        required 
+                    />
+                    <div id="employeePasswordHint" style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">
+                        Must be at least 6 characters. Passwords are encrypted with BCrypt and never stored in plain-text.
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" id="cancelEmployeeModalBtn">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="submitEmployeeBtn">
+                    <span id="submitEmployeeBtnText">Create Employee</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

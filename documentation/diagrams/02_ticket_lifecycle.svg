@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 320" width="850" height="320">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="850" height="320" fill="#ffffff" rx="8" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="425" y="32" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="bold" fill="#0f172a">SupportDesk Ticket Lifecycle State Machine (टिकट जीवनचक्र)</text>
+
+  <!-- OPEN -->
+  <g>
+    <rect x="40" y="80" width="120" height="70" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="100" y="112" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="bold" fill="#1e40af">OPEN</text>
+    <text x="100" y="132" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#3b82f6">टिकट दर्ज हुआ</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 160 115 L 200 115" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="180" y="105" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">Assign</text>
+
+  <!-- ASSIGNED -->
+  <g>
+    <rect x="200" y="80" width="130" height="70" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="265" y="112" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="bold" fill="#92400e">ASSIGNED</text>
+    <text x="265" y="132" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#b45309">तकनीशियन नियुक्त</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 330 115 L 370 115" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="350" y="105" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">Start Work</text>
+
+  <!-- IN_PROGRESS -->
+  <g>
+    <rect x="370" y="80" width="140" height="70" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+    <text x="440" y="112" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="13" font-weight="bold" fill="#5b21b6">IN_PROGRESS</text>
+    <text x="440" y="132" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#7c3aed">कार्य प्रगति पर है</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 510 115 L 550 115" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="530" y="105" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">Remediate</text>
+
+  <!-- RESOLVED -->
+  <g>
+    <rect x="550" y="80" width="130" height="70" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="615" y="112" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="bold" fill="#166534">RESOLVED</text>
+    <text x="615" y="132" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#15803d">समस्या हल हुई</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 680 115 L 720 115" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="700" y="105" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="9" fill="#64748b">Confirm</text>
+
+  <!-- CLOSED -->
+  <g>
+    <rect x="720" y="80" width="100" height="70" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+    <text x="770" y="112" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="14" font-weight="bold" fill="#334155">CLOSED</text>
+    <text x="770" y="132" text-anchor="middle" font-family="'Segoe UI', sans-serif" font-size="10.5" fill="#64748b">टिकट बंद</text>
+  </g>
+
+  <!-- SLA Timeline Box -->
+  <g>
+    <rect x="40" y="195" width="780" height="95" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="60" y="222" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Priority-Based SLA Resolution Targets (प्राथमिकता अनुसार SLA सीमाएँ):</text>
+    <text x="60" y="250" font-family="'Segoe UI', sans-serif" font-size="11.5" fill="#b91c1c"><tspan font-weight="bold">CRITICAL: 4 Hours</tspan> — Severely blocking operations (e.g., ERP/database outage)</text>
+    <text x="60" y="275" font-family="'Segoe UI', sans-serif" font-size="11.5" fill="#c2410c"><tspan font-weight="bold">HIGH: 8 Hours</tspan> — Significant impact with no workaround (e.g., VPN failure)</text>
+    <text x="440" y="250" font-family="'Segoe UI', sans-serif" font-size="11.5" fill="#d97706"><tspan font-weight="bold">MEDIUM: 24 Hours</tspan> — Standard operational issue (e.g., mouse/keyboard issue)</text>
+    <text x="440" y="275" font-family="'Segoe UI', sans-serif" font-size="11.5" fill="#2563eb"><tspan font-weight="bold">LOW: 48 Hours</tspan> — Minor inquiry or non-blocking request</text>
+  </g>
+</svg>

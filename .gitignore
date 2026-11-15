@@ -1,0 +1,61 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Maven ###
+target/
+
+### Eclipse ###
+.metadata/
+bin/
+.settings/
+.classpath
+.project
+.factorypath
+.apt_generated/
+
+### Logs ###
+*.log
+
+### Environment Secrets ###
+.env
+application-local.properties
+
+# Python cache and temporary documentation files
+__pycache__/
+*.py[cod]
+documentation/rendered_pages/
+documentation/html_render_test.png
+documentation/test_pdf.html
+documentation/test_pdf.pdf
+documentation/screenshots/test.png
